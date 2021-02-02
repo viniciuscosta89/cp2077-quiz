@@ -1,9 +1,15 @@
-import styled from 'styled-components'
-import GitHubCorner from '../src/components/GitHubCorner'
-import QuizBackground from '../src/components/QuizBackground'
-import Widget from '../src/components/Widgets'
+import React from 'react';
+import styled from 'styled-components';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 
-import db from '../db.json'
+import db from '../db.json';
+import Footer from '../src/components/Footer';
+import GitHubCorner from '../src/components/GitHubCorner';
+import QuizBackground from '../src/components/QuizBackground';
+import QuizLogo from '../src/components/QuizLogo';
+import Widget from '../src/components/Widgets';
+import Button from '../src/components/Button';
 
 const QuizContainer = styled.div`
   width: 100%;
@@ -15,25 +21,77 @@ const QuizContainer = styled.div`
     margin: auto;
     padding: 1rem;
   }
-`
+`;
 
 export default function Home() {
+  const router = useRouter();
+  const [name, setName] = React.useState('');
+
   return (
     <QuizBackground backgroundImage={db.bg}>
+      <Head>
+        <title>
+          Cyberpunk 2077 Quiz -
+          {' '}
+          {db.title}
+        </title>
+      </Head>
+
       <QuizContainer>
+        <QuizLogo />
         <Widget>
           <Widget.Header>
             <h1>Cyberpunk 2077</h1>
           </Widget.Header>
 
           <Widget.Content>
-
-            <p>lorem</p>
+            <p>
+              Teste os seus conhecimentos sobre o universo
+              Cyberpunk 2077!
+            </p>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              router.push(`/quiz?name=${name}`);
+            }}
+            >
+              <input
+                type="text"
+                placeholder="Diz aí seu nome"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
+              <Button
+                color={db.theme.colors.terciary}
+                type="submit"
+                disabled={name.length === 0}
+              >
+                Jogar
+              </Button>
+            </form>
           </Widget.Content>
         </Widget>
+
+        <Widget>
+          <Widget.Content>
+            <h4>
+              Quizes da galera
+            </h4>
+            <p>
+              Dá uma olhada nesses quizes incríveis que o pessoal da Imersão
+              {' '}
+              <strike>Alguma coisa</strike>
+              {' '}
+              fez:
+            </p>
+
+          </Widget.Content>
+        </Widget>
+
+        <Footer />
       </QuizContainer>
 
-      <GitHubCorner projectUrl="https://github.com/viniciuscosta89"/>
+      <GitHubCorner projectUrl="https://github.com/viniciuscosta89" />
     </QuizBackground>
-  )
+  );
 }
