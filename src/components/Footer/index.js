@@ -2,8 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FooterWrapper = styled.footer`
-  background-color: #00000070;
-  padding: 20px;
+  background-color: rgba(0, 0, 0, .5);
+  backdrop-filter: blur(10px);
+  clip-path: polygon(0 0, 90% 0, 100% 2rem, 100% 100%, 10% 100%, 0 80%);
+  padding: 1.5rem 2rem;
   display: flex;
   align-items: center;
   border-radius: ${({ theme }) => theme.borderRadius};

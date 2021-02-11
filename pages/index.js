@@ -4,12 +4,13 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import db from '../db.json';
+import Button from '../src/components/Button';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
+import Input from '../src/components/Input';
 import QuizBackground from '../src/components/QuizBackground';
 import QuizLogo from '../src/components/QuizLogo';
 import Widget from '../src/components/Widgets';
-import Button from '../src/components/Button';
 
 const QuizContainer = styled.div`
   width: 100%;
@@ -54,12 +55,12 @@ export default function Home() {
               router.push(`/quiz?name=${name}`);
             }}
             >
-              <input
+              <Input
                 type="text"
                 placeholder="Diz aí seu nome"
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
+                onChange={(e) => setName(e.target.value)}
+                name="userName"
+                value={name}
               />
               <Button
                 color={db.theme.colors.terciary}
