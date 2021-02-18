@@ -67,6 +67,7 @@ export default function Home() {
                 type="submit"
                 disabled={name.length === 0}
               >
+                <span className="glitch" />
                 Jogar
               </Button>
             </form>

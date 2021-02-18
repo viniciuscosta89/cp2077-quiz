@@ -4,7 +4,7 @@ const Widget = styled.div`
   background-color: rgba(0, 0, 0, .85);
   backdrop-filter: blur(10px);
   border-radius: ${({ theme }) => theme.borderRadius};
-  clip-path: polygon(0 0, 90% 0, 100% 2rem, 100% 100%, 10% 100%, 0 90%);
+  clip-path: polygon(0 0, 90% 0, 100% 2rem, 100% 100%, 3rem 100%, 0 90%);
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   min-height: 200px;
@@ -96,9 +96,10 @@ Widget.Topic = styled.div`
       color: ${({ theme }) => theme.colors.contrastText};
       cursor: pointer;
       display: block;
+      line-height: 1;
       margin-bottom: 8px;
       outline: 0;
-      padding: 10px 15px;
+      padding: 1rem;
       position: relative;
       text-decoration: none;
       transition: all .5s ease-in-out;

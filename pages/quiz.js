@@ -1,26 +1,59 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { useRouter } from 'next/router';
 
 import db from '../db.json';
+import AlternativesForm from '../src/components/AlternativesForm';
 import Button from '../src/components/Button';
 import GitHubCorner from '../src/components/GitHubCorner';
+import Loading from '../src/components/Loading';
 import QuizBackground from '../src/components/QuizBackground';
 import QuizContainer from '../src/components/QuizContainer';
 import QuizLogo from '../src/components/QuizLogo';
 import Widget from '../src/components/Widgets';
 
-function LoadingWidget() {
+function ResultWidget({ results }) {
+  ResultWidget.propTypes = {
+    results: PropTypes.arrayOf,
+  };
+
+  ResultWidget.defaultProps = {
+    results: [],
+  };
+
   return (
     <Widget>
       <Widget.Header>
-        Carregando...
+        Tela de resultado
       </Widget.Header>
 
       <Widget.Content>
-        [Desafio do Loading]
+        <p>
+          Você acertou
+          {' '}
+          {results.filter((result) => result).length}
+          {' '}
+          perguntas
+        </p>
+        <ul>
+          {results.map((result, index) => (
+            <li key={`result__${index + 1}`}>
+              #0
+              {index + 1}
+              {' '}
+              Resultado:
+              {' '}
+              {result === true ? 'Acertou' : 'Errou'}
+            </li>
+          ))}
+        </ul>
       </Widget.Content>
     </Widget>
+  );
+}
+
+function LoadingWidget() {
+  return (
+    <Loading />
   );
 }
 
@@ -29,22 +62,28 @@ function QuestionWidget({
   questionIndex,
   totalQuestions,
   onSubmit,
+  addResult,
 }) {
   QuestionWidget.propTypes = {
-    question: PropTypes.objectOf,
+    question: PropTypes.objectOf(PropTypes.any),
     questionIndex: PropTypes.number,
     totalQuestions: PropTypes.number,
     onSubmit: PropTypes.func,
+    addResult: PropTypes.func,
   };
 
   QuestionWidget.defaultProps = {
-    question: {},
+    question: () => {},
     questionIndex: 0,
     totalQuestions: 0,
     onSubmit: () => {},
+    addResult: () => {},
   };
 
-  // const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
+  const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
+  const [isQuestionSubmitted, setIsQuestionSubmitted] = React.useState(false);
+  const isCorrect = selectedAlternative === question.answer;
+  const isSelected = selectedAlternative !== undefined;
 
   return (
     <Widget>
@@ -66,7 +105,6 @@ function QuestionWidget({
           width: '100%',
           height: '150px',
           objectFit: 'cover',
-          // clipPath: 'url(#video-trailer-clip)',
         }}
         className="quiz__img"
         src={question.image}
@@ -76,29 +114,41 @@ function QuestionWidget({
         <h3 className="question__title">{question.title}</h3>
         <p>{question.description}</p>
 
-        <form
+        <AlternativesForm
           onSubmit={(e) => {
             e.preventDefault();
-            onSubmit();
-            // setTimeout(() => {
-            //   setSelectedAlternative(undefined);
-            //   console.log(selectedAlternative);
-            // }, 3000);
+            setIsQuestionSubmitted(true);
+            setTimeout(() => {
+              addResult(isCorrect);
+              onSubmit();
+              setSelectedAlternative(undefined);
+              setIsQuestionSubmitted(false);
+            }, 2000);
           }}
         >
           {question.alternatives.map((alternative, index) => {
             const alternativeId = `alternative__${index}`;
-            // const isSelected = selectedAlternative === index;
+            const alternativeKey = alternative.slice(0, 5).replace(' ', '');
+            const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
+            const alternativeSelected = selectedAlternative === index;
 
             return (
-              <Widget.Topic>
+              <Widget.Topic key={alternativeKey}>
                 <input
+                  className="form__input"
                   name={question.title}
                   type="radio"
                   id={alternativeId}
-                  // onChange={() => setSelectedAlternative(index)}
+                  onChange={() => setSelectedAlternative(index)}
                 />
-                <label htmlFor={alternativeId}>{alternative}</label>
+                <label
+                  className="form__label"
+                  htmlFor={alternativeId}
+                  data-selected={alternativeSelected}
+                  data-status={isQuestionSubmitted && alternativeStatus}
+                >
+                  {alternative}
+                </label>
               </Widget.Topic>
             );
           })}
@@ -106,10 +156,15 @@ function QuestionWidget({
           <Button
             color={db.theme.colors.terciary}
             type="submit"
+            disabled={!isSelected}
           >
+            <span className="glitch" />
             Confirmar
           </Button>
-        </form>
+
+          {isQuestionSubmitted && isCorrect && <p>Você acertou!</p>}
+          {isQuestionSubmitted && !isCorrect && <p>ERROOOU!</p>}
+        </AlternativesForm>
 
       </Widget.Content>
 
@@ -125,10 +180,18 @@ const screenStates = {
 
 export default function QuizPage() {
   const [screenState, setScreenState] = React.useState(screenStates.LOADING);
+  const [results, setResults] = React.useState([]);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const questionIndex = currentQuestion;
   const question = db.questions[questionIndex];
   const totalQuestions = db.questions.length;
+
+  function addResult(result) {
+    setResults([
+      ...results,
+      result,
+    ]);
+  }
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -157,12 +220,13 @@ export default function QuizPage() {
             questionIndex={questionIndex}
             totalQuestions={totalQuestions}
             onSubmit={handleQuizSubmit}
+            addResult={addResult}
           />
         )}
 
         {screenState === screenStates.LOADING && <LoadingWidget /> }
 
-        {screenState === screenStates.RESULT && <div>Parabéns!</div> }
+        {screenState === screenStates.RESULT && <ResultWidget results={results} /> }
 
       </QuizContainer>
 
