@@ -4,7 +4,9 @@ const Widget = styled.div`
   background-color: rgba(0, 0, 0, .85);
   backdrop-filter: blur(10px);
   border-radius: ${({ theme }) => theme.borderRadius};
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   clip-path: polygon(0 0, 90% 0, 100% 2rem, 100% 100%, 3rem 100%, 0 90%);
+  /* filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5)); */
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   min-height: 200px;
@@ -13,26 +15,20 @@ const Widget = styled.div`
   z-index: 1;
 
   h1, h2, h3, h4 {
-    font-size: 16px;
+    font-size: 1.25rem;
     font-weight: 700;
     line-height: 1;
     margin: 0;
   }
 
   p {
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
 
     &:not(:last-child) {
       margin: 0 0 2rem;
     }
-  }
-
-  svg {
-    position: absolute;
-    width: 0;
-    height: 0;
   }
 
   .question {
@@ -73,6 +69,28 @@ Widget.Content = styled.div`
   ul {
     list-style: none;
     padding: 0;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+`;
+
+Widget.Link = styled.a`
+  background-color: ${({ theme }) => `${theme.colors.primary}40`};
+  border-radius: ${({ theme }) => theme.borderRadius};
+  color: ${({ theme }) => theme.colors.contrastText};
+  display: block;
+  cursor: pointer;
+  margin-bottom: 8px;
+  outline: 0;
+  padding: 10px 15px;
+  text-decoration: none;
+  transition: .3s;
+
+  &:hover,
+  &:focus {
+    opacity: .5;
   }
 `;
 

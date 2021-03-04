@@ -13,11 +13,30 @@ const InputBase = styled.input`
   outline-color: ${({ theme }) => theme.colors.secondary};
   padding: 0.75rem 1rem;
   width: 100%;
+
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: ${({ theme }) => theme.colors.contrastText}DD;
+    opacity: 1; /* Firefox */
+  }
 `;
 
 export default function Input({
   onChange, placeholder, name, value,
 }) {
+  Input.propTypes = {
+    onChange: PropTypes.func,
+    placeholder: PropTypes.string,
+    name: PropTypes.string,
+    value: PropTypes.string,
+  };
+
+  Input.defaultProps = {
+    onChange: () => {},
+    placeholder: '',
+    name: '',
+    value: '',
+  };
+
   return (
     <InputBase
       onChange={onChange}
@@ -27,17 +46,3 @@ export default function Input({
     />
   );
 }
-
-Input.propTypes = {
-  onChange: PropTypes.func,
-  placeholder: PropTypes.string,
-  name: PropTypes.string,
-  value: PropTypes.string,
-};
-
-Input.defaultProps = {
-  onChange: () => {},
-  placeholder: '',
-  name: '',
-  value: '',
-};

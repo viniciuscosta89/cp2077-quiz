@@ -1,45 +1,107 @@
 {
 	"bg": "./cp-2077-bg.jpg",
-	"title": "Quiz CSS da Alura",
-	"description": "Teste os seus conhecimentos sobre CSS e vamos ver quantos layouts você vai deixar de quebrar",
+	"title": "Cyperpunk 2077 Quiz",
+	"description": "Acorda, samurai! Tá na hora de testar os seus conhecimentos sobre o universo de Cyberpunk 2077",
   "questions": [
     {
-      "image": "https://media.giphy.com/media/j5P0DQIOf4PonLi55G/giphy.gif",
-      "title": "Qual a diferença entre = , == e === ?",
+      "image": "https://www.myneobuxportal.com/wp-content/uploads/2021/01/cyberpunk-2077-quiz/9.jpg",
+      "title": "Para qual plataforma Cyberpunk 2077 não será lançado?",
       "description": "Pergunta fácil em!",
       "answer": 1,
       "alternatives": [
-        "São a mesma coisa",
-        "O = significa atribuição de valor. Já == verifica a igualdade do valor, enquanto === verifica valor e tipo de variável."
+        "Windows",
+        "PlayStation 3",
+        "Google Stadia",
+        "Xbox One"
       ]
     },
     {
-      "image": "https://media.giphy.com/media/Ie2Hs3A0uJRtK/giphy.gif",
-      "title": "Que tipos de dados são suportados em JavaScript?",
+      "image": "https://www.myneobuxportal.com/wp-content/uploads/2021/01/cyberpunk-2077-quiz/1.jpg",
+      "title": "Onde a história de Cyberpunk acontece?",
       "description": "E agora? Você sabe?",
+      "answer": 2,
+      "alternatives": [
+        "Cybercity",
+        "Day City",
+        "Night City",
+        "Cyber District"
+      ]
+    },
+    {
+      "image": "https://www.myneobuxportal.com/wp-content/uploads/2021/01/cyberpunk-2077-quiz/2.jpg",
+      "title": "Qual o nome do personagem principal (versão masculina)?",
+      "answer": 1,
+      "alternatives": [
+        "Victor",
+        "Vincent",
+        "Vance",
+        "Valentin"
+      ]
+    },
+    {
+      "image": "https://www.myneobuxportal.com/wp-content/uploads/2021/01/cyberpunk-2077-quiz/3.jpg",
+      "title": "Qual o nome do parceiro do V no começo do jogo?",
       "answer": 0,
       "alternatives": [
-        "Number, String, Undefined, Null e Bool.",
-        "Int, String, Undefined, Null e Bool."
+        "Jackie Welles",
+        "Dexter Deshawn",
+        "Johnny Silverhand",
+        "Rockerboy"
       ]
     },
     {
-      "image": "https://media.giphy.com/media/iI4vhciiVh2b3j9sgo/giphy.gif",
-      "title": "Qual a diferença de window e global?",
-      "answer": 1,
+      "image": "https://www.myneobuxportal.com/wp-content/uploads/2021/01/cyberpunk-2077-quiz/4.jpg",
+      "title": "Todos esses são caminhos de vida, exceto:",
+      "answer": 2,
       "alternatives": [
-        "São a mesma coisa",
-        "window é o escopo global no browser, e global no node"
+        "Street Kid",
+        "Corpo",
+        "City Dweller",
+        "Nomad"
       ]
     },
     {
-      "image": "https://media.giphy.com/media/iI4vhciiVh2b3j9sgo/giphy.gif",
-      "title": "Qual a forma antiga de trabalhar com AJAX na Web?",
+      "image": "https://www.myneobuxportal.com/wp-content/uploads/2021/01/cyberpunk-2077-quiz/5.jpg",
+      "title": "Qual banda o Johnny Silverhand fez parte?",
       "answer": 1,
       "alternatives": [
-        "JSONHttpRequest",
-        "XMLHttpRequest",
-        "fetch"
+        "Corpo-Killers",
+        "Samurai",
+        "Tyger Dragon",
+        "Steel Claws"
+      ]
+    },
+    {
+      "image": "https://www.myneobuxportal.com/wp-content/uploads/2021/01/cyberpunk-2077-quiz/6.jpg",
+      "title": "Qual é a corporação mais poderosa da cidade?",
+      "answer": 3,
+      "alternatives": [
+        "Militech",
+        "Kang Tao",
+        "Night Corp",
+        "Arasaka"
+      ]
+    },
+    {
+      "image": "https://www.myneobuxportal.com/wp-content/uploads/2021/01/cyberpunk-2077-quiz/7.jpg",
+      "title": "O que pode ser instalado no corpo do (a) V para melhorar seus atributos?",
+      "answer": 1,
+      "alternatives": [
+        "Tech Implants",
+        "Cyberware",
+        "Hardware",
+        "Mechanical Upgrades"
+      ]
+    },
+    {
+      "image": "https://www.myneobuxportal.com/wp-content/uploads/2021/01/cyberpunk-2077-quiz/11.jpg",
+      "title": "Quais armas as balas travam e perseguem o alvo pra você?",
+      "answer": 1,
+      "alternatives": [
+        "Magnetic Weapons",
+        "Smart Weapons",
+        "Power Weapons",
+        "Tech Weapons"
       ]
     }
   ],

@@ -1,6 +1,6 @@
-// src/components/GitHubCorner/index.js
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
   position: absolute;
@@ -15,27 +15,34 @@ const SVGWrapper = styled.svg`
   color: ${({ theme }) => theme.colors.black};
   cursor: pointer;
 
-  &:hover .octo-arm{
+  &:hover .octo-arm {
     animation:octocat-wave 560ms ease-in-out
   }
 
-  @keyframes octocat-wave{
+  @keyframes octocat-wave {
     0%,100%{transform:rotate(0)}
     20%,60%{transform:rotate(-25deg)}
     40%,80%{transform:rotate(10deg)}
   }
-  @media (max-width:500px){
-    &:hover .octo-arm{
-      animation:none
+  @media (max-width:500px) {
+    &:hover .octo-arm {
+      animation: none
     }
-    & .octo-arm{
-      animation:octocat-wave 560ms ease-in-out
+    & .octo-arm {
+      animation: octocat-wave 560ms ease-in-out
     }
   }
 `;
 
-// eslint-disable-next-line react/prop-types
 export default function GitHubCorner({ projectUrl }) {
+  GitHubCorner.propTypes = {
+    projectUrl: PropTypes.string,
+  };
+
+  GitHubCorner.defaultProps = {
+    projectUrl: '',
+  };
+
   return (
     <Wrapper>
       <a href={projectUrl} target="_blank" rel="noreferrer">
