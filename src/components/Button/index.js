@@ -9,7 +9,8 @@ const Button = styled.button`
   clip-path: polygon(0 0, 100% 0, 100% 0, 100% 100%, 1rem 100%, 0 60%);
   color: ${({ color }) => (color === db.theme.colors.terciary ? db.theme.colors.contrastText : db.theme.colors.black)};
   display: block;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 1.25rem;
   font-weight: bold;
   padding: 1rem;
   position: relative;

@@ -58,7 +58,7 @@ function ResultWidget({ results }) {
                     viewBox="0 0 174.239 174.239"
                     fill={db.theme.colors.success}
                     style={{
-                      display: 'inline-block', 'max-width': '1.25rem', verticalAlign: 'middle',
+                      display: 'inline-block', maxWidth: '1.25rem', verticalAlign: 'middle',
                     }}
                   >
                     <path d="M0 0v174.239h174.239V0H0zm159.305 159.305H14.935V14.935h144.37v144.37z" />
@@ -71,7 +71,7 @@ function ResultWidget({ results }) {
                     viewBox="0 0 174.239 174.239"
                     fill={db.theme.colors.wrong}
                     style={{
-                      display: 'inline-block', 'max-width': '1.25rem', verticalAlign: 'middle',
+                      display: 'inline-block', maxWidth: '1.25rem', verticalAlign: 'middle',
                     }}
                   >
                     <path d="M0 0v174.239h174.239V0H0zm159.305 159.305H14.935V14.935h144.37v144.37z" />
@@ -270,7 +270,7 @@ function QuestionWidget({
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 174.239 174.239"
                 fill={db.theme.colors.success}
-                style={{ display: 'block', margin: '1rem auto 0', 'max-width': '2rem' }}
+                style={{ display: 'block', margin: '1rem auto 0', maxWidth: '2rem' }}
                 key="correct"
                 initial="pageInitial"
                 animate="pageAnimate"
@@ -299,7 +299,7 @@ function QuestionWidget({
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 174.239 174.239"
                 fill={db.theme.colors.wrong}
-                style={{ display: 'block', margin: '1rem auto 0', 'max-width': '2rem' }}
+                style={{ display: 'block', margin: '1rem auto 0', maxWidth: '2rem' }}
                 key="correct"
                 initial="pageInitial"
                 animate="pageAnimate"
@@ -334,7 +334,7 @@ function QuestionWidget({
 
 export default function QuizPage({ externalQuestions, externalBg }) {
   QuizPage.propTypes = {
-    externalQuestions: PropTypes.objectOf(PropTypes.any),
+    externalQuestions: PropTypes.arrayOf(PropTypes.any),
     externalBg: PropTypes.string,
   };
 

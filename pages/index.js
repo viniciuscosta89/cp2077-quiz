@@ -35,6 +35,8 @@ export default function Home() {
       <Head>
         <title>
           {db.title}
+          {' '}
+          | Alura Quiz
         </title>
       </Head>
 

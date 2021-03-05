@@ -9,6 +9,8 @@ const InputBase = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: ${({ theme }) => theme.borderRadius};
   color: ${({ theme }) => theme.colors.contrastText};
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 1rem;
   margin-bottom: 1.5rem;
   outline-color: ${({ theme }) => theme.colors.secondary};
   padding: 0.75rem 1rem;

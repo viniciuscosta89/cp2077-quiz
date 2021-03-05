@@ -9,7 +9,7 @@ export default function Link({ children, href, ...props }) {
   };
 
   Link.defaultProps = {
-    children: () => {},
+    children: '',
     href: '',
   };
 
